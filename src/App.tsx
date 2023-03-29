@@ -1,24 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect, useRef } from 'react';
 
 function App() {
+  const [count,setCount] = useState(0);
+  const[number,setNumber] = useState(0);
+
+  const numberRef = useRef(0)
+
+
+
+  console.log("renderizou");
+  console.log(numberRef)
+
+    useEffect(()=> {
+    //setNumber((prevNumber) => prevNumber + 10)
+    numberRef.current = Math.random()
+    })
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>O número é : {number}</h1>
+      <h1>O número do useRef é {numberRef.current}</h1>
+      <h1>O contador é: {count}</h1>
+      <button onClick={() => setCount((prevCount) => prevCount +1)}> Adicionar</button>
+     
+
     </div>
   );
 }
